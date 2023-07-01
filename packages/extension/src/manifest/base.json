@@ -1,9 +1,9 @@
 {
-  "author": "https://www.enkrypt.com",
-  "homepage_url": "https://www.enkrypt.com",
+  "author": "https://ibcland.ir",
+  "homepage_url": "https://ibcland.ir",
   "version": "",
-  "name": "Enkrypt: Ethereum, Polkadot & AVAX Wallet",
-  "short_name": "Enkrypt",
+  "name": "IBC Wallet: blockchain Wallet",
+  "short_name": "IBC Wallet",
   "permissions": [
     "storage",
     "unlimitedStorage",
