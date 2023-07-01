@@ -12,6 +12,7 @@ export default async (
   const supportedNetworks = {
     [NetworkNames.Optimism]: "optimism",
     [NetworkNames.Binance]: "bsc",
+    [NetworkNames.IBC]: "ibc",
     [NetworkNames.Arbitrum]: "arbitrum",
     [NetworkNames.Gnosis]: "gnosis",
     [NetworkNames.Avalanche]: "avalanche",

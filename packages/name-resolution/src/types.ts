@@ -122,6 +122,7 @@ export type CoinType =
   | "OP"
   | "CRO"
   | "BSC"
+  | "IBS"
   | "GO"
   | "ETC"
   | "TOMO"

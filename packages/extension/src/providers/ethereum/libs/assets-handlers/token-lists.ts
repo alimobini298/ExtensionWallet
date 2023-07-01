@@ -5,6 +5,7 @@ const TOKEN_FETCH_TTL = 1000 * 60 * 60;
 const TokenList: Record<SupportedNetworkNames, string> = {
   [NetworkNames.Binance]: `https://tokens.coingecko.com/${CoingeckoPlatform.Binance}/all.json`,
   [NetworkNames.Ethereum]: `https://tokens.coingecko.com/${CoingeckoPlatform.Ethereum}/all.json`,
+  [NetworkNames.IBC]: `https://tokens.coingecko.com/${CoingeckoPlatform.Ethereum}/all.json`,
   [NetworkNames.Matic]: `https://tokens.coingecko.com/${CoingeckoPlatform.Matic}/all.json`,
   [NetworkNames.AstarEVM]: `https://tokens.coingecko.com/${CoingeckoPlatform.Astar}/all.json`,
   [NetworkNames.Okc]: `https://tokens.coingecko.com/${CoingeckoPlatform.Okc}/all.json`,

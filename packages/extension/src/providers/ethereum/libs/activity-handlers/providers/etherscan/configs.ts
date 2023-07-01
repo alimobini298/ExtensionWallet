@@ -4,6 +4,7 @@ const NetworkEndpoints: Record<string, string> = {
   [NetworkNames.Ethereum]: "https://api.etherscan.io/",
   [NetworkNames.Goerli]: "https://api-goerli.etherscan.io/",
   [NetworkNames.Binance]: "https://api.bscscan.com/",
+  [NetworkNames.IBC]: "https://chain.ibcland.ir",
   [NetworkNames.Matic]: "https://api.polygonscan.com/",
   [NetworkNames.Moonbeam]: "https://api-moonbeam.moonscan.io/",
   [NetworkNames.Moonriver]: "https://api-moonriver.moonscan.io/",

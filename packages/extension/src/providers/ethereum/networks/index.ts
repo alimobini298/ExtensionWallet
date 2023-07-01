@@ -3,6 +3,7 @@ import goerliNode from "./goerli";
 import etcNode from "./etc";
 import maticNode from "./matic";
 import bscNode from "./bsc";
+import ibcNode from "./ibc";
 import moonbeamNode from "./glmr";
 import moonriverNode from "./movr";
 import karuraEvmNode from "./karura";
@@ -34,6 +35,7 @@ export default {
   etc: etcNode,
   matic: maticNode,
   bsc: bscNode,
+  ibc: ibcNode,
   moonbeam: moonbeamNode,
   moonriver: moonriverNode,
   karuraEvm: karuraEvmNode,

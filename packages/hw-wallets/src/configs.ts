@@ -13,6 +13,7 @@ const ledgerAppNames = {
   [NetworkNames.Ethereum]: "Ethereum",
   [NetworkNames.Matic]: "Ethereum",
   [NetworkNames.Binance]: "Ethereum",
+  [NetworkNames.IBC]: "IBC",
   [NetworkNames.Rootstock]: "RSK",
   [NetworkNames.EthereumClassic]: "Ethereum Classic",
   [NetworkNames.Goerli]: "Ethereum",

@@ -35,6 +35,11 @@ const supportedNetworks: Record<SupportedNetworkNames, SupportedNetwork> = {
     tbName: "eth",
     cgPlatform: CoingeckoPlatform.Ethereum,
   },
+  [NetworkNames.IBC]: {
+    tbName: "IBC",
+    cgPlatform: CoingeckoPlatform.Ethereum,
+  },
+
   [NetworkNames.Matic]: {
     tbName: "matic",
     cgPlatform: CoingeckoPlatform.Matic,

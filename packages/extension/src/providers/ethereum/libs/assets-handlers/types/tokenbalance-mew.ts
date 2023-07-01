@@ -27,6 +27,7 @@ export interface ZkSyncBalanceType {
 
 export type SupportedNetworkNames =
   | NetworkNames.Binance
+  | NetworkNames.IBC
   | NetworkNames.Ethereum
   | NetworkNames.Matic
   | NetworkNames.AstarEVM

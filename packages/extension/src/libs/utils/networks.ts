@@ -64,6 +64,7 @@ const POPULAR_NAMES = [
   NetworkNames.Matic,
   NetworkNames.Polkadot,
   NetworkNames.Binance,
+  NetworkNames.IBC,
   NetworkNames.Rootstock,
   NetworkNames.Optimism,
 ];

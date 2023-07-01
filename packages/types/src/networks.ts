@@ -1,5 +1,6 @@
 export enum NetworkNames {
   Ethereum = "ETH",
+  IBC = "IBC",
   Okc = "OKT",
   Binance = "BNB",
   EthereumClassic = "ETC",
@@ -58,6 +59,7 @@ export enum NetworkNames {
 export enum CoingeckoPlatform {
   Ethereum = "ethereum",
   Binance = "binance-smart-chain",
+  IBC = "ibc",
   EthereumClassic = "ethereum-classic",
   Matic = "polygon-pos",
   Moonbeam = "moonbeam",
