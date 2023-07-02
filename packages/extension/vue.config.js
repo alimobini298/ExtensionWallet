@@ -6,17 +6,17 @@ module.exports = {
     index: {
       template: "public/index.html",
       entry: "./src/ui/provider-pages/main.ts",
-      title: "enkrypt extension",
+      title: "IBC Wallet extension",
     },
     action: {
       template: "public/index.html",
       entry: "./src/ui/action/main.ts",
-      title: "enkrypt extension popup",
+      title: "IBC Wallet extension popup",
     },
     onboard: {
       template: "public/index.html",
       entry: "./src/ui/onboard/main.ts",
-      title: "enkrypt extension onboard",
+      title: "IBC wallet extension onboard",
     },
   },
   indexPath: "index.html",

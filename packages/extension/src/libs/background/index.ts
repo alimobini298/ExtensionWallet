@@ -75,7 +75,7 @@ class BackgroundHandler {
         });
       }
       return {
-        error: JSON.stringify(getCustomError("Enkrypt: not implemented")),
+        error: JSON.stringify(getCustomError("IBC Wallet: not implemented")),
       };
     }
     const tabInfo = TabInfo(await Browser.tabs.get(_tabid));
