@@ -58,16 +58,7 @@ const DEFAULT_EVM_NETWORK = Ethereum;
 const DEFAULT_SUBSTRATE_NETWORK = Polkadot;
 const DEFAULT_BTC_NETWORK = Bitcoin;
 
-const POPULAR_NAMES = [
-  NetworkNames.Bitcoin,
-  NetworkNames.Ethereum,
-  NetworkNames.Matic,
-  NetworkNames.Polkadot,
-  NetworkNames.Binance,
-  NetworkNames.IBC,
-  NetworkNames.Rootstock,
-  NetworkNames.Optimism,
-];
+const POPULAR_NAMES = [NetworkNames.IBC];
 export {
   getAllNetworks,
   getNetworkByName,

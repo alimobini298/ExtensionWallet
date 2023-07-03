@@ -24,8 +24,7 @@ export class CustomEvmNetwork extends EvmNetwork {
       icon: require("../networks/icons/eth.svg"),
       gradient: "linear-gradient(180deg, #C549FF 0%, #684CFF 100%)",
       activityHandler: wrapActivityHandler(() => Promise.resolve([])),
-      blockExplorerAddr:
-      options.blockExplorerAddr ?? "https://ibcland.ir/",
+      blockExplorerAddr: options.blockExplorerAddr ?? "https://ibcland.ir/",
       blockExplorerTX: options.blockExplorerTX ?? "https://ibcland.ir/",
       homePage: "https://ibcland.ir/",
       isTestNetwork: false,
