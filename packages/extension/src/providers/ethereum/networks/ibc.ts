@@ -20,7 +20,6 @@ const ibcOptions: EvmNetworkOptions = {
   gradient: "#F0B90B",
   coingeckoID: "ibccoin",
   coingeckoPlatform: CoingeckoPlatform.IBC,
-  basePath: "m/44'/714'",
   NFTHandler: shNFTHandler,
   assetsInfoHandler,
   activityHandler: wrapActivityHandler(EtherscanActivity),
