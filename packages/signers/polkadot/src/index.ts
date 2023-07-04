@@ -45,6 +45,7 @@ class Signer implements SignerInterface {
     const seed = mnemonicToMiniSecret(
       phrase,
       password,
+      undefined,
       options.onlyJS
     );
     let pair: KeyPair;
