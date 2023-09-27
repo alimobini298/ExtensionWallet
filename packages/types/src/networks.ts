@@ -7,6 +7,7 @@ export enum NetworkNames {
   Goerli = "GOERLI",
   Sepolia = "SEPOLIA",
   Matic = "MATIC",
+  MaticZK = "MATICZK",
   Moonbeam = "GLMR",
   Moonriver = "MOVR",
   Rootstock = "Rootstock",
@@ -49,11 +50,15 @@ export enum NetworkNames {
   Klaytn = "KLAY",
   Aurora = "AURORA",
   PuppyNet = "puppyNet",
+  Shibarium = "SHIB",
   Opal = "OPL",
   Quartz = "QTZ",
   Unique = "UNQ",
   Pendulum = "pendulum",
   Amplitude = "amplitude",
+  Vara = "VARA",
+  Base = "BASE",
+  Celo = "CELO",
 }
 
 export enum CoingeckoPlatform {
@@ -62,6 +67,7 @@ export enum CoingeckoPlatform {
   IBC = "ibc",
   EthereumClassic = "ethereum-classic",
   Matic = "polygon-pos",
+  MaticZK = "polygon-zkevm",
   Moonbeam = "moonbeam",
   Moonriver = "moonriver",
   Acala = "acala",
@@ -90,4 +96,7 @@ export enum CoingeckoPlatform {
   Zksync = "zksync",
   Quartz = "quartz",
   Unique = "unique-network",
+  Base = "base",
+  Celo = "celo",
+  Shibarium = "shibarium",
 }

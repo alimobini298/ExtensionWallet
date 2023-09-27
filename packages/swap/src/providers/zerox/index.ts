@@ -1,5 +1,6 @@
 import type Web3Eth from "web3-eth";
 import { numberToHex, toBN } from "web3-utils";
+import fetch from "node-fetch";
 import {
   EVMTransaction,
   getQuoteOptions,
@@ -209,6 +210,10 @@ class ZeroX extends ProviderClass {
           toTokenAmount: toBN(response.buyAmount),
           fromTokenAmount: toBN(response.sellAmount),
         };
+      })
+      .catch((e) => {
+        console.error(e);
+        return Promise.resolve(null);
       });
   }
 
@@ -221,6 +226,7 @@ class ZeroX extends ProviderClass {
       const response: ProviderQuoteResponse = {
         fromTokenAmount: res.fromTokenAmount,
         toTokenAmount: res.toTokenAmount,
+        additionalNativeFees: toBN(0),
         provider: this.name,
         quote: {
           meta,
@@ -247,6 +253,7 @@ class ZeroX extends ProviderClass {
         fromTokenAmount: res.fromTokenAmount,
         provider: this.name,
         toTokenAmount: res.toTokenAmount,
+        additionalNativeFees: toBN(0),
         transactions: res.transactions,
         slippage: quote.meta.slippage || DEFAULT_SLIPPAGE,
         fee: feeConfig * 100,

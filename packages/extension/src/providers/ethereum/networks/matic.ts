@@ -1,13 +1,13 @@
 import { CoingeckoPlatform, NetworkNames } from "@enkryptcom/types";
 import { EvmNetwork, EvmNetworkOptions } from "../types/evm-network";
 import assetsInfoHandler from "@/providers/ethereum/libs/assets-handlers/assetinfo-mew";
-import RaribleNFTHandler from "@/libs/nft-handlers/rarible";
+import shNFTHandler from "@/libs/nft-handlers/simplehash";
 import { EtherscanActivity } from "../libs/activity-handlers";
 import wrapActivityHandler from "@/libs/activity-state/wrap-activity-handler";
 
 const maticOptions: EvmNetworkOptions = {
   name: NetworkNames.Matic,
-  name_long: "Polygon (Matic)",
+  name_long: "Polygon",
   homePage: "https://polygonscan.com/",
   blockExplorerTX: "https://polygonscan.com/tx/[[txHash]]",
   blockExplorerAddr: "https://polygonscan.com/address/[[address]]",
@@ -17,10 +17,9 @@ const maticOptions: EvmNetworkOptions = {
   currencyNameLong: "Polygon Matic",
   node: "wss://nodes.mewapi.io/ws/matic",
   icon: require("./icons/matic.svg"),
-  gradient: "#7B3FE4",
   coingeckoID: "matic-network",
   coingeckoPlatform: CoingeckoPlatform.Matic,
-  NFTHandler: RaribleNFTHandler,
+  NFTHandler: shNFTHandler,
   assetsInfoHandler,
   activityHandler: wrapActivityHandler(EtherscanActivity),
 };

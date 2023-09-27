@@ -20,8 +20,8 @@ import { EvmNetwork } from "../../types/evm-network";
 import { getKnownNetworkTokens } from "./token-lists";
 import { CoingeckoPlatform, NetworkNames } from "@enkryptcom/types";
 import { NATIVE_TOKEN_ADDRESS } from "../common";
-import getZKSyncBalances from "./zksync";
 import getTomoBalances from "./tomochain";
+import { CoinGeckoTokenMarket } from "@/libs/market-data/types";
 
 const API_ENPOINT = "https://tokenbalance.mewapi.io/";
 const API_ENPOINT2 = "https://partners.mewapi.io/balances/";
@@ -100,15 +100,21 @@ const supportedNetworks: Record<SupportedNetworkNames, SupportedNetwork> = {
     tbName: "aurora",
     cgPlatform: CoingeckoPlatform.Aurora,
   },
+  [NetworkNames.ZkSync]: {
+    tbName: "era",
+    cgPlatform: CoingeckoPlatform.Zksync,
+  },
+  [NetworkNames.MaticZK]: {
+    tbName: "pze",
+    cgPlatform: CoingeckoPlatform.MaticZK,
+  },
+  [NetworkNames.Celo]: {
+    tbName: "celo",
+    cgPlatform: CoingeckoPlatform.Celo,
+  },
   [NetworkNames.TomoChain]: {
     tbName: "",
     cgPlatform: CoingeckoPlatform.TomoChain,
-  },
-  [NetworkNames.ZkSyncGoerli]: {
-    tbName: "",
-  },
-  [NetworkNames.ZkSync]: {
-    tbName: "",
   },
 };
 
@@ -116,16 +122,14 @@ const getTokens = (
   chain: SupportedNetworkNames,
   address: string
 ): Promise<TokenBalance[]> => {
-  if (chain === NetworkNames.ZkSyncGoerli || chain === NetworkNames.ZkSync) {
-    return getZKSyncBalances(chain, address);
-  }
   if (chain === NetworkNames.TomoChain) {
     return getTomoBalances(chain, address);
   }
   let url = "";
   if (chain === NetworkNames.Ethereum || chain === NetworkNames.Binance)
-    url = `${API_ENPOINT}${supportedNetworks[chain].tbName}?address=${address}`;
-  else url = `${API_ENPOINT2}${supportedNetworks[chain].tbName}/${address}`;
+    url = `${API_ENPOINT}${supportedNetworks[chain].tbName}?address=${address}&platform=enkrypt&type=internal`;
+  else
+    url = `${API_ENPOINT2}${supportedNetworks[chain].tbName}/${address}?platform=enkrypt&type=internal`;
   return fetch(url)
     .then((res) => res.json())
     .then((json) => {
@@ -170,7 +174,10 @@ export default (
           ),
           supportedNetworks[networkName].cgPlatform as CoingeckoPlatform
         )
-      : tokens.reduce((obj, cur) => ({ ...obj, [cur.contract]: null }), {});
+      : tokens.reduce(
+          (obj, cur) => ({ ...obj, [cur.contract]: null }),
+          {} as Record<string, CoinGeckoTokenMarket | null>
+        );
     if (network.coingeckoID) {
       const nativeMarket = await marketData.getMarketData([
         network.coingeckoID,

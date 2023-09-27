@@ -24,6 +24,7 @@
             :picked-trade="pickedTrade"
             :from-token="swapData.fromToken"
             :to-token="swapData.toToken"
+            :network="network"
             @update:picked-trade="selectTrade"
           />
           <best-offer-error
@@ -139,6 +140,7 @@ import {
   NetworkType,
   ProviderSwapResponse,
   SupportedNetworkName,
+  SwapToken,
 } from "@enkryptcom/swap";
 import PublicKeyRing from "@/libs/keyring/public-keyring";
 import { SwapData, ProviderResponseWithStatus } from "../../types";
@@ -166,6 +168,7 @@ const swapData: SwapData = JSON.parse(
 swapData.trades.forEach((t) => {
   t.fromTokenAmount = toBN(`0x${t.fromTokenAmount}`);
   t.toTokenAmount = toBN(`0x${t.toTokenAmount}`);
+  t.additionalNativeFees = toBN(`0x${t.additionalNativeFees}`);
 });
 swapData.existentialDeposit = toBN(`0x${swapData.existentialDeposit}`);
 swapData.nativeBalance = toBN(`0x${swapData.nativeBalance}`);
@@ -244,7 +247,8 @@ const getTransactionFees = async (
     return getEVMTransactionFees(
       transactionObjects!,
       network.value as EvmNetwork,
-      swapData.nativePrice
+      swapData.nativePrice,
+      trade.additionalNativeFees
     );
   } else if (networkInfo.type === NetworkType.Substrate) {
     return getSubstrateGasVals(
@@ -277,7 +281,6 @@ onMounted(async () => {
   network.value = (await getNetworkByName(selectedNetwork))!;
   account.value = await KeyRing.getAccount(swapData.fromAddress);
   isWindowPopup.value = account.value.isHardware;
-  /* Waiting for changelly to fix the api rate issue
   let tempBestTrade = pickedTrade.value;
   let tempFinalToFiat = 0;
   for (const trade of swapData.trades) {
@@ -296,7 +299,6 @@ onMounted(async () => {
     }
   }
   pickedTrade.value = tempBestTrade;
-  */
   await setTransactionFees();
   isLooking.value = false;
 });
@@ -415,6 +417,7 @@ const selectFee = (option: GasPriceTypes) => {
 };
 
 const selectTrade = (trade: ProviderSwapResponse) => {
+  console.log(trade.provider);
   pickedTrade.value = trade;
   setTransactionFees();
 };

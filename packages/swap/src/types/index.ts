@@ -24,6 +24,7 @@ export enum SupportedNetworkName {
   Fantom = NetworkNames.Fantom,
   Klaytn = NetworkNames.Klaytn,
   Aurora = NetworkNames.Aurora,
+  Zksync = NetworkNames.ZkSync,
 }
 
 // eslint-disable-next-line no-shadow
@@ -97,6 +98,7 @@ export interface QuoteMetaOptions {
   walletIdentifier: WalletIdentifier;
   slippage?: string;
   changellyQuoteId?: string;
+  changellynetworkFee?: BN;
   priceRoute?: unknown;
 }
 
@@ -113,6 +115,7 @@ export enum ProviderName {
   paraswap = "paraswap",
   zerox = "zerox",
   changelly = "changelly",
+  rango = "rango",
 }
 
 // eslint-disable-next-line no-shadow
@@ -171,6 +174,7 @@ export interface ProviderQuoteResponse {
   toTokenAmount: BN;
   fromTokenAmount: BN;
   totalGaslimit: number;
+  additionalNativeFees: BN;
   provider: ProviderName;
   quote: SwapQuote;
   minMax: MinMaxResponse;
@@ -189,6 +193,7 @@ export interface ProviderSwapResponse {
   transactions: SwapTransaction[];
   toTokenAmount: BN;
   fromTokenAmount: BN;
+  additionalNativeFees: BN;
   provider: ProviderName;
   slippage: string;
   fee: number;

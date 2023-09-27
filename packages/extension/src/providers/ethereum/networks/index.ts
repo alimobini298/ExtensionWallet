@@ -2,6 +2,7 @@ import ethNode from "./eth";
 import goerliNode from "./goerli";
 import etcNode from "./etc";
 import maticNode from "./matic";
+import maticZkNode from "./maticzk";
 import bscNode from "./bsc";
 import ibcNode from "./ibc";
 import moonbeamNode from "./glmr";
@@ -27,6 +28,9 @@ import klayNode from "./klay";
 import auroraNode from "./aurora";
 import puppyNode from "./puppy";
 import sepoliaNode from "./sepolia";
+import baseNode from "./base";
+import celoNode from "./celo";
+import shibNode from "./shib";
 
 export default {
   goerli: goerliNode,
@@ -34,6 +38,7 @@ export default {
   ethereum: ethNode,
   etc: etcNode,
   matic: maticNode,
+  maticzk: maticZkNode,
   bsc: bscNode,
   ibc: ibcNode,
   moonbeam: moonbeamNode,
@@ -67,4 +72,7 @@ export default {
   klaytn: klayNode,
   aurora: auroraNode,
   puppy: puppyNode,
+  base: baseNode,
+  celo: celoNode,
+  shib: shibNode,
 };

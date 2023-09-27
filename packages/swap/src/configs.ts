@@ -33,6 +33,16 @@ const FEE_CONFIGS = {
       fee: 0.025,
     },
   },
+  [ProviderName.rango]: {
+    [WalletIdentifier.enkrypt]: {
+      referrer: "0xabe295bac4b5bce0edcf42d180a3a952ef718b9e",
+      fee: 0.00875,
+    },
+    [WalletIdentifier.mew]: {
+      referrer: "0x48ae878bf9f752ee65679c017e32e4cafac51696",
+      fee: 0.025,
+    },
+  },
 };
 
 const TOKEN_LISTS: {
@@ -50,6 +60,7 @@ const TOKEN_LISTS: {
   [NetworkNames.Moonbeam]: `https://raw.githubusercontent.com/enkryptcom/dynamic-data/main/swaplists/${SupportedNetworkName.Moonbeam}.json`,
   [NetworkNames.Gnosis]: `https://raw.githubusercontent.com/enkryptcom/dynamic-data/main/swaplists/${SupportedNetworkName.Gnosis}.json`,
   [NetworkNames.Klaytn]: `https://raw.githubusercontent.com/enkryptcom/dynamic-data/main/swaplists/${SupportedNetworkName.Klaytn}.json`,
+  [NetworkNames.ZkSync]: `https://raw.githubusercontent.com/enkryptcom/dynamic-data/main/swaplists/${SupportedNetworkName.Zksync}.json`,
 };
 
 const CHANGELLY_LIST =

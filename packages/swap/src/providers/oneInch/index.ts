@@ -1,5 +1,6 @@
 import type Web3Eth from "web3-eth";
 import { numberToHex, toBN } from "web3-utils";
+import fetch from "node-fetch";
 import {
   EVMTransaction,
   getQuoteOptions,
@@ -78,9 +79,13 @@ const supportedNetworks: {
     approvalAddress: ONEINCH_APPROVAL_ADDRESS,
     chainId: "42161",
   },
+  [SupportedNetworkName.Zksync]: {
+    approvalAddress: "0x6e2b76966cbd9cf4cc2fa0d76d24d5241e0abc2f",
+    chainId: "324",
+  },
 };
 
-const BASE_URL = "https://api.1inch.io/v5.0/";
+const BASE_URL = "https://partners.mewapi.io/oneinch/v5.2/";
 
 class OneInch extends ProviderClass {
   tokenList: TokenType[];
@@ -158,14 +163,14 @@ class OneInch extends ProviderClass {
       return Promise.resolve(null);
     const feeConfig = FEE_CONFIGS[this.name][meta.walletIdentifier];
     const params = new URLSearchParams({
-      fromTokenAddress: options.fromToken.address,
-      toTokenAddress: options.toToken.address,
+      src: options.fromToken.address,
+      dst: options.toToken.address,
       amount: options.amount.toString(),
-      fromAddress: options.fromAddress,
-      destReceiver: options.toAddress,
+      from: options.fromAddress,
+      receiver: options.toAddress,
       slippage: meta.slippage ? meta.slippage : DEFAULT_SLIPPAGE,
       fee: feeConfig ? (feeConfig.fee * 100).toFixed(3) : "0",
-      referrerAddress: feeConfig ? feeConfig.referrer : "",
+      referrer: feeConfig ? feeConfig.referrer : "",
       disableEstimate: "true",
     });
     return fetch(
@@ -214,9 +219,13 @@ class OneInch extends ProviderClass {
         }
         return {
           transactions,
-          toTokenAmount: toBN(response.toTokenAmount),
-          fromTokenAmount: toBN(response.fromTokenAmount),
+          toTokenAmount: toBN(response.toAmount),
+          fromTokenAmount: options.amount,
         };
+      })
+      .catch((e) => {
+        console.error(e);
+        return Promise.resolve(null);
       });
   }
 
@@ -229,6 +238,7 @@ class OneInch extends ProviderClass {
       const response: ProviderQuoteResponse = {
         fromTokenAmount: res.fromTokenAmount,
         toTokenAmount: res.toTokenAmount,
+        additionalNativeFees: toBN(0),
         provider: this.name,
         quote: {
           meta,
@@ -256,6 +266,7 @@ class OneInch extends ProviderClass {
         provider: this.name,
         toTokenAmount: res.toTokenAmount,
         transactions: res.transactions,
+        additionalNativeFees: toBN(0),
         slippage: quote.meta.slippage || DEFAULT_SLIPPAGE,
         fee: feeConfig * 100,
         getStatusObject: async (
