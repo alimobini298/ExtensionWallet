@@ -17,7 +17,6 @@ const ibcOptions: EvmNetworkOptions = {
   currencyNameLong: "IBC",
   node: "https://chain.ibcland.ir",
   icon: require("./icons/ibc.png"),
-  gradient: "#F0B90B",
   coingeckoID: "ibc",
   coingeckoPlatform: CoingeckoPlatform.IBC,
   NFTHandler: shNFTHandler,
