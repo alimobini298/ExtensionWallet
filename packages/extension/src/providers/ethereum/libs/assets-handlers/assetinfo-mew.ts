@@ -116,6 +116,10 @@ const supportedNetworks: Record<SupportedNetworkNames, SupportedNetwork> = {
     tbName: "",
     cgPlatform: CoingeckoPlatform.TomoChain,
   },
+  [NetworkNames.Shibarium]: {
+    tbName: "shib",
+    cgPlatform: CoingeckoPlatform.Shibarium,
+  },
 };
 
 const getTokens = (

@@ -45,6 +45,7 @@ export type SupportedNetworkNames =
   | NetworkNames.Klaytn
   | NetworkNames.Aurora
   | NetworkNames.TomoChain
+  | NetworkNames.Shibarium
   | NetworkNames.MaticZK
   | NetworkNames.Celo
   | NetworkNames.ZkSync;
